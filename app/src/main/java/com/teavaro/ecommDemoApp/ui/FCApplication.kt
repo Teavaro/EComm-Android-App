@@ -10,12 +10,14 @@ import android.util.Log
 import com.google.firebase.FirebaseApp
 import com.swrve.sdk.SwrveInitMode
 import com.swrve.sdk.SwrveNotificationConfig
+import com.swrve.sdk.SwrvePushNotificationListener
 import com.swrve.sdk.SwrveSDK
 import com.swrve.sdk.config.SwrveConfig
 import com.swrve.sdk.geo.SwrveGeoConfig
 import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.BuildConfig
 import com.teavaro.ecommDemoApp.R
+import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.funnelConnect.data.models.FCOptions
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
@@ -34,9 +36,14 @@ class FCApplication: Application() {
         instance = this
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
-        //FunnelConnectSDK.initialize(this, "cBsA3tQa.fyL749JH+?yJW=7", FCOptions(true))
         FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", R.raw.fc_configs, FCOptions(true))
-        UTIQ.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", R.raw.utiq_configs, UTIQOptions(true))
+        val config = resources.openRawResource(R.raw.utiq_configs)
+            .bufferedReader()
+            .use { it.readText() }
+        val options = UTIQOptions()
+        options.enableLogging()
+        options.setFallBackConfigJson(config)
+        UTIQ.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", options)
         FirebaseApp.initializeApp(this)
         initSwrve()
     }
@@ -67,11 +74,11 @@ class FCApplication: Application() {
                     .largeIconDrawableId(com.teavaro.ecommDemoApp.R.drawable.logo1)
                     .accentColorHex("#3949AB")
             config.notificationConfig = notificationConfig.build()
-//            config.notificationListener = SwrvePushNotificationListener {
-//                val section = it.getJSONObject("New Group 1").getString("section")
-//                Store.section = section
-////                Log.e("SwrveDemo", section)
-//            }
+            config.notificationListener = SwrvePushNotificationListener {
+                val section = it.getJSONObject("New Group 1").getString("section")
+                Store.section = section
+//                Log.e("SwrveDemo", section)
+            }
             SwrveSDK.createInstance(this, 32153, "FiIpd4eZ8CtQ6carAAx9", config)
             //geo config
             val geoConfig = SwrveGeoConfig.Builder()

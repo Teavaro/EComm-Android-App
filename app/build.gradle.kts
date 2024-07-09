@@ -102,18 +102,19 @@ dependencies {
     implementation(BuildSystem.libraries.googleServices)
 
     //FunnelConnect and UTIQ
-    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.33") {
+    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.35")
+    {
         exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
     }
-    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.37")
+    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.45")
     //
-    val lifecycleVersion = "2.7.0"
+    val lifecycleVersion = "2.8.3"
     val navigationVersion = "2.7.7"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
-    implementation ("com.google.code.gson:gson:2.10")
+    implementation ("com.google.code.gson:gson:2.10.1")
 
     // Hyperion debugger
     debugImplementation(BuildSystem.libraries.hyperionCore)
