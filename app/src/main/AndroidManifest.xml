@@ -1,27 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.teavaro.ecommDemoApp"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.teavaro.ecommDemoApp">
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-sdk
-        tools:overrideLibrary="com.swrve.sdk, com.swrve.sdk.conversations, com.swrve.sdk.push, com.swrve.swrvesdkcommon,com.swrve.sdk.geo"/>
+    <uses-sdk tools:overrideLibrary="com.swrve.sdk, com.swrve.sdk.conversations, com.swrve.sdk.push, com.swrve.swrvesdkcommon,com.swrve.sdk.geo" />
     <application
-        android:allowBackup="false"
-        android:label="@string/app_name"
-        android:icon="@mipmap/app_icon"
         android:name=".ui.FCApplication"
-        android:supportsRtl="true"
+        android:allowBackup="false"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
         android:theme="@style/Theme.TeavaroDemoApp">
-        <service android:name="com.swrve.sdk.SwrveFirebaseMessagingService"
+        <service
+            android:name="com.swrve.sdk.SwrveFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <service
+            android:name="com.willowtreeapps.hyperion.core.internal.HyperionService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"> <!-- Ensure this is correctly set -->
+            <intent-filter>
+                <action android:name="com.willowtreeapps.hyperion.core.internal.HyperionService" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.myapp.MY_CUSTOM_ACTION" />
+                <!-- Add more actions as needed -->
+            </intent-filter>
+        </receiver>
         <activity
             android:name="com.teavaro.ecommDemoApp.ui.MainActivity"
             android:exported="true">
@@ -32,8 +51,10 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="www.teavarodemoapp.com"
                     android:scheme="http" />

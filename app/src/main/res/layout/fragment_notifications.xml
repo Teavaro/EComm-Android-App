@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="30dp"
-    android:orientation="vertical"
     android:layout_marginLeft="20dp"
+    android:layout_marginTop="30dp"
     android:layout_marginRight="20dp"
+    android:orientation="vertical"
     tools:context=".ui.notifications.NotificationsFragment">
 
     <androidx.appcompat.widget.AppCompatButton
@@ -14,6 +14,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
         android:text="Ident Click campaign"
         android:textAlignment="textStart"
         android:textColor="@color/orange" />
@@ -23,6 +24,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
         android:text="Abandoned Cart's campaign"
         android:textAlignment="textStart"
         android:textColor="@color/orange" />
@@ -32,6 +34,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
         android:text="Shop's campaign"
         android:textAlignment="textStart"
         android:textColor="@color/orange" />
@@ -41,6 +44,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
         android:text="Cashews's campaign"
         android:textAlignment="textStart"
         android:textColor="@color/orange" />
