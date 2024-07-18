@@ -23,24 +23,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name="com.willowtreeapps.hyperion.core.internal.HyperionService"
-            android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE"> <!-- Ensure this is correctly set -->
-            <intent-filter>
-                <action android:name="com.willowtreeapps.hyperion.core.internal.HyperionService" />
-            </intent-filter>
-        </service>
-
-        <receiver
-            android:name=".MyBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.example.myapp.MY_CUSTOM_ACTION" />
-                <!-- Add more actions as needed -->
-            </intent-filter>
-        </receiver>
         <activity
             android:name="com.teavaro.ecommDemoApp.ui.MainActivity"
             android:exported="true">

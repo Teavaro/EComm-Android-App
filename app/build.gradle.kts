@@ -117,9 +117,9 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.10.1")
 
     // Hyperion debugger
-    debugImplementation(BuildSystem.libraries.hyperionCore)
-    debugImplementation(BuildSystem.libraries.hyperionSharedPreferences)
-    releaseImplementation(BuildSystem.libraries.hyperionNoop)
+    //debugImplementation(BuildSystem.libraries.hyperionCore)
+    //debugImplementation(BuildSystem.libraries.hyperionSharedPreferences)
+    //releaseImplementation(BuildSystem.libraries.hyperionNoop)
 
     testImplementation("junit:junit:4.13.2")
     //Room
