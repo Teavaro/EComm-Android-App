@@ -26,6 +26,7 @@ import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.permissions.PermissionConsentDialogFragment
 import com.teavaro.ecommDemoApp.ui.permissions.UtiqConsent
 import com.teavaro.funnelConnect.main.FunnelConnectSDK
+import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.Permissions
 import com.utiq.utiqTech.main.Utiq
 import org.json.JSONObject
 import java.lang.reflect.Type
@@ -156,11 +157,12 @@ object Store {
                     context
                 )
                 if (omPermissionAccepted || optPermissionAccepted || nbaPermissionAccepted) {
-                    /*UTIQ.checkMNOEligibility({
+                    val stubToken = SharedPreferenceUtils.getStubToken(context)
+                    Utiq.checkMNOEligibility(stubToken, {
                         showUtiqConsent(context, supportFragmentManager)
                     }, {
 
-                    })*/
+                    })
                 } else {
                     clearData(context)
                 }
@@ -221,17 +223,17 @@ object Store {
         context: Activity
     ) {
         val action = {
-//            val permissions = Permissions()
-//            permissions.addPermission(keyOm, om)
-//            permissions.addPermission(keyOpt, opt)
-//            permissions.addPermission(keyNba, nba)
-//            FunnelConnectSDK.updatePermissions(
-//                permissions,
-//                fcNotificationsName,
-//                notificationsVersion, {
-//                    updateFCData(it)
-//                }
-//            )
+            val permissions = Permissions()
+            permissions.addPermission(keyOm, om)
+            permissions.addPermission(keyOpt, opt)
+            permissions.addPermission(keyNba, nba)
+            FunnelConnectSDK.updatePermissions(
+                permissions,
+                fcNotificationsName,
+                notificationsVersion, {
+                    updateFCData(it)
+                }
+            )
         }
         if (isFunnelConnectStarted) {
             action.invoke()
