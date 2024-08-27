@@ -25,9 +25,8 @@ import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.permissions.PermissionConsentDialogFragment
 import com.teavaro.ecommDemoApp.ui.permissions.UtiqConsent
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.Permissions
-import com.teavaro.utiqTech.initializer.UTIQ
+import com.teavaro.funnelConnect.main.FunnelConnectSDK
+import com.utiq.utiqTech.main.Utiq
 import org.json.JSONObject
 import java.lang.reflect.Type
 import java.net.URLEncoder
@@ -157,11 +156,11 @@ object Store {
                     context
                 )
                 if (omPermissionAccepted || optPermissionAccepted || nbaPermissionAccepted) {
-                    UTIQ.checkMNOEligibility({
+                    /*UTIQ.checkMNOEligibility({
                         showUtiqConsent(context, supportFragmentManager)
                     }, {
 
-                    })
+                    })*/
                 } else {
                     clearData(context)
                 }
@@ -179,12 +178,12 @@ object Store {
 
     fun showUtiqConsent(context: Activity, supportFragmentManager: FragmentManager) {
         UtiqConsent.open(supportFragmentManager) { consent ->
-            if (UTIQ.isInitialized()) {
+            if (Utiq.isInitialized()) {
                 if (consent) {
-                    UTIQ.acceptConsent()
+                    Utiq.acceptConsent()
                     utiqStartService(context)
                 } else {
-                    UTIQ.rejectConsent()
+                    Utiq.rejectConsent()
                 }
                 updateUtiqConsent(consent, context)
             }
@@ -196,7 +195,7 @@ object Store {
         context: Activity
     ) {
         val action = {
-            val permissions = Permissions()
+            /*val permissions = Permissions()
             permissions.addPermission(keyUtiq, consent)
             FunnelConnectSDK.updatePermissions(
                 permissions,
@@ -204,7 +203,7 @@ object Store {
                 notificationsVersion, {
                     updateFCData(it)
                 }
-            )
+            )*/
         }
         if (isFunnelConnectStarted) {
             action.invoke()
@@ -222,17 +221,17 @@ object Store {
         context: Activity
     ) {
         val action = {
-            val permissions = Permissions()
-            permissions.addPermission(keyOm, om)
-            permissions.addPermission(keyOpt, opt)
-            permissions.addPermission(keyNba, nba)
-            FunnelConnectSDK.updatePermissions(
-                permissions,
-                fcNotificationsName,
-                notificationsVersion, {
-                    updateFCData(it)
-                }
-            )
+//            val permissions = Permissions()
+//            permissions.addPermission(keyOm, om)
+//            permissions.addPermission(keyOpt, opt)
+//            permissions.addPermission(keyNba, nba)
+//            FunnelConnectSDK.updatePermissions(
+//                permissions,
+//                fcNotificationsName,
+//                notificationsVersion, {
+//                    updateFCData(it)
+//                }
+//            )
         }
         if (isFunnelConnectStarted) {
             action.invoke()
@@ -564,7 +563,7 @@ object Store {
         atid = "{\"status\":\"notFound\"}"
         mtid = "{\"status\":\"notFound\"}"
         val stubToken = SharedPreferenceUtils.getStubToken(context)
-        UTIQ.startService(stubToken, {
+        Utiq.startService(stubToken, {
             Log.d("okhttp.OkHttpClient", "startService good")
             atid = it.atid.toString()
             mtid = it.mtid.toString()
@@ -597,8 +596,8 @@ object Store {
 
     fun clearUtiqData(context: Context) {
         SharedPreferenceUtils.setStubToken(context, null)
-        UTIQ.clearData()
-        UTIQ.clearCookies()
+        Utiq.clearData()
+        Utiq.clearCookies()
         atid = ""
         mtid = ""
         TrackUtils.mtid = null

@@ -11,7 +11,7 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentFPermissionsConsentBinding
 import com.teavaro.ecommDemoApp.viewBinding
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.main.FunnelConnectSDK
 
 class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permissions_consent) {
 

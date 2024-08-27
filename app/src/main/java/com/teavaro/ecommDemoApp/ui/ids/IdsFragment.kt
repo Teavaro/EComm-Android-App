@@ -9,10 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
-import com.teavaro.ecommDemoApp.databinding.FragmentEmailsBinding
 import com.teavaro.ecommDemoApp.databinding.FragmentIdsBinding
 import com.teavaro.ecommDemoApp.ui.notifications.NotificationsViewModel
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 
 class IdsFragment : Fragment() {

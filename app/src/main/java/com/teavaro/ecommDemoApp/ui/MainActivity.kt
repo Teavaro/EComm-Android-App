@@ -26,8 +26,8 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-import com.teavaro.utiqTech.initializer.UTIQ
+import com.teavaro.funnelConnect.main.FunnelConnectSDK
+import com.utiq.utiqTech.main.Utiq
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
@@ -82,9 +82,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             Store.umid = "FunnelConnect failed initialization."
             Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
         }
-        UTIQ.onInitialize({
+        Utiq.onInitialize({
             Log.d("okhttp.OkHttpClient:", "inside UTIQ.onInitialize")
-            if (UTIQ.isConsentAccepted()) {
+            if (Utiq.isConsentAccepted()) {
                 Log.d("okhttp.OkHttpClient:", "isConsentAccepted()")
                 Store.utiqStartService(this)
             }

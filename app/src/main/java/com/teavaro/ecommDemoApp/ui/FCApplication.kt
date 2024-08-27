@@ -20,9 +20,9 @@ import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.funnelConnect.data.models.FCOptions
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-import com.teavaro.utiqTech.data.models.UTIQOptions
-import com.teavaro.utiqTech.initializer.UTIQ
+import com.teavaro.funnelConnect.main.FunnelConnectSDK
+import com.utiq.utiqTech.data.models.UtiqOptions
+import com.utiq.utiqTech.main.Utiq
 
 @Suppress("unused")
 class FCApplication: Application() {
@@ -36,14 +36,17 @@ class FCApplication: Application() {
         instance = this
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
-        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", R.raw.fc_configs, FCOptions(true))
-        val config = resources.openRawResource(R.raw.utiq_configs)
+        var config = resources.openRawResource(R.raw.fc_configs)
             .bufferedReader()
             .use { it.readText() }
-        val options = UTIQOptions()
-        options.enableLogging()
-        options.setFallBackConfigJson(config)
-        UTIQ.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", options)
+        val fcOptions = FCOptions().enableLogging().setFallBackConfigJson(config)
+        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", fcOptions )
+        config = resources.openRawResource(R.raw.utiq_configs)
+            .bufferedReader()
+            .use { it.readText() }
+        val utiqOptions = UtiqOptions().enableLogging().setFallBackConfigJson(config)
+        println("UTIQSDK-${BuildConfig.VERSION_NAME}-------------")
+        Utiq.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", utiqOptions)
         FirebaseApp.initializeApp(this)
         initSwrve()
     }

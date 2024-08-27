@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.core.utils.PushNotification
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentNotificationsBinding
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.main.FunnelConnectSDK
 
 
 class NotificationsFragment : Fragment() {

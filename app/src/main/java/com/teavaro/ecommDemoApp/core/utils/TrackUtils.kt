@@ -5,7 +5,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.teavaro.ecommDemoApp.core.Store
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.main.FunnelConnectSDK
 
 object TrackUtils  : LifecycleObserver {
     var mtid: String? = null

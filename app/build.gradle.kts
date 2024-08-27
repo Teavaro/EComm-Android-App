@@ -102,11 +102,11 @@ dependencies {
     implementation(BuildSystem.libraries.googleServices)
 
     //FunnelConnect and UTIQ
-    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.35")
+    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.41")
     {
         exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
     }
-    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.45")
+    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.55")
     //
     val lifecycleVersion = "2.8.3"
     val navigationVersion = "2.7.7"
