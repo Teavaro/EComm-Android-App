@@ -197,7 +197,7 @@ object Store {
         context: Activity
     ) {
         val action = {
-            /*val permissions = Permissions()
+            val permissions = Permissions()
             permissions.addPermission(keyUtiq, consent)
             FunnelConnectSDK.updatePermissions(
                 permissions,
@@ -205,7 +205,7 @@ object Store {
                 notificationsVersion, {
                     updateFCData(it)
                 }
-            )*/
+            )
         }
         if (isFunnelConnectStarted) {
             action.invoke()
