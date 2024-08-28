@@ -12,6 +12,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentShopBinding
 
@@ -26,7 +27,7 @@ class ShopFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val shopViewModel =
-            ViewModelProvider(this).get(ShopViewModel::class.java)
+            ViewModelProvider(this)[ShopViewModel::class.java]
 
         TrackUtils.impression("shop_view")
         Store.section = "shop"
@@ -39,28 +40,26 @@ class ShopFragment : Fragment() {
         for (pos in 0..list.lastIndex){
             binding.listItems.addView(shopAdapter.getView(pos, view, container!!))
         }
-        val btnSeeMore = Button(context).apply {
-            text = "See More Products"
-            layoutParams = ViewGroup.MarginLayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            ).apply {
-                marginStart = 16.dpToPx(context)
-                marginEnd = 16.dpToPx(context)
+        if(SharedPreferenceUtils.isLogin(requireContext())) {
+            val btnSeeMore = Button(context).apply {
+                text = "See More Products"
+                layoutParams = ViewGroup.MarginLayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    marginStart = 16.dpToPx(context)
+                    marginEnd = 16.dpToPx(context)
+                }
+                isAllCaps = true
+                gravity = Gravity.CENTER
+                setOnClickListener {
+                    val url = Store.getClickIdentLink(context)
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    context.startActivity(intent)
+                }
             }
-            //setBackgroundColor(ContextCompat.getColor(context, R.color.lightGray))
-            //setTextColor(ContextCompat.getColor(context, R.color.darkGray))
-            //textStyle = Typeface.BOLD
-            isAllCaps = true
-            gravity = Gravity.CENTER
-            //setPadding(0, 12.dpToPx(context), 0, 12.dpToPx(context))
-            setOnClickListener {
-                val url = Store.getClickIdentLink(context)
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                context.startActivity(intent)
-            }
+            binding.listItems.addView(btnSeeMore)
         }
-        binding.listItems.addView(btnSeeMore)
 
         return root
     }
