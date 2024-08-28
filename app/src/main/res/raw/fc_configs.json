@@ -1,0 +1,12 @@
+{
+    "funnelConnect":{
+        "baseUrl":"https://funnelconnect.brand-demo.com",
+        "identPath":"/op/brand-demo-app-ident/ident",
+        "identIdNames":[
+            "enemail",
+            "martechpass"
+        ],
+        "infoPath":"/op/brand-demo-app-info/info",
+        "trackPath":"/op/brand-demo-app-track/track"
+    }
+}

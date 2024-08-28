@@ -3,5 +3,4 @@ object GradlePlugins {
     const val androidApplication = "com.android.application"
     const val kotlinAndroid = "kotlin-android"
     const val detektLint = "io.gitlab.arturbosch.detekt"
-    const val extensions = "kotlin-android-extensions"
 }

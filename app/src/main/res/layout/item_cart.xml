@@ -19,9 +19,8 @@
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
+        android:gravity="end"
         android:text="Pork Cocktail Sausages"/>
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,7 +37,7 @@
             android:id="@+id/txtPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"/>
+            android:gravity="end"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -56,7 +55,7 @@
             android:id="@+id/txtCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"/>
+            android:gravity="end"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -74,7 +73,7 @@
             android:id="@+id/txtSubTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"/>
+            android:gravity="end"/>
     </RelativeLayout>
 
     <View

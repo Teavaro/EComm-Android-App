@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_start">
+
+    <fragment
+        android:id="@+id/navigation_start"
+        android:name="com.teavaro.ecommDemoApp.ui.StartFragment"
+        android:label=""
+        tools:layout="@layout/fragment_start" />
 
     <fragment
         android:id="@+id/navigation_home"
@@ -34,6 +40,24 @@
         android:name="com.teavaro.ecommDemoApp.ui.login.LoginFragment"
         android:label=" @string/title_login"
         tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.teavaro.ecommDemoApp.ui.notifications.NotificationsFragment"
+        android:label=" @string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_email"
+        android:name="com.teavaro.ecommDemoApp.ui.emails.EmailsFragment"
+        android:label=" @string/title_emails"
+        tools:layout="@layout/fragment_emails" />
+
+    <fragment
+        android:id="@+id/navigation_ids"
+        android:name="com.teavaro.ecommDemoApp.ui.ids.IdsFragment"
+        android:label=" @string/title_ids"
+        tools:layout="@layout/fragment_ids" />
 
     <fragment
         android:id="@+id/navigation_settings"

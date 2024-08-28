@@ -18,18 +18,35 @@ import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.BuildConfig
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
-import com.teavaro.funnelConnect.data.models.dataClasses.FCOptions
-
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
+import com.teavaro.funnelConnect.data.models.FCOptions
+import com.teavaro.funnelConnect.main.FunnelConnectSDK
+import com.utiq.utiqTech.data.models.UtiqOptions
+import com.utiq.utiqTech.main.Utiq
 
 @Suppress("unused")
 class FCApplication: Application() {
 
+    companion object {
+        lateinit var instance: Context
+    }
+
     override fun onCreate() {
         super.onCreate()
+        instance = this
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
-        FunnelConnectSDK.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", FCOptions(true))
+        var config = resources.openRawResource(R.raw.fc_configs)
+            .bufferedReader()
+            .use { it.readText() }
+        val fcOptions = FCOptions().enableLogging().setFallBackConfigJson(config)
+        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", fcOptions )
+        config = resources.openRawResource(R.raw.utiq_configs)
+            .bufferedReader()
+            .use { it.readText() }
+        val utiqOptions = UtiqOptions().enableLogging().setFallBackConfigJson(config)
+        println("UTIQSDK-${BuildConfig.VERSION_NAME}-------------")
+        Utiq.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", utiqOptions)
         FirebaseApp.initializeApp(this)
         initSwrve()
     }
@@ -54,9 +71,10 @@ class FCApplication: Application() {
                     notificationManager.createNotificationChannel(channel);
                 }
             }
-            val notificationConfig: SwrveNotificationConfig.Builder = SwrveNotificationConfig.Builder(R.drawable.burst, R.drawable.crinklys, channel)
+            val notificationConfig: SwrveNotificationConfig.Builder = SwrveNotificationConfig.Builder(
+                com.teavaro.ecommDemoApp.R.drawable.logo1, com.teavaro.ecommDemoApp.R.drawable.logo1, channel)
                 .activityClass(MainActivity::class.java)
-                    .largeIconDrawableId(R.drawable.grapes)
+                    .largeIconDrawableId(com.teavaro.ecommDemoApp.R.drawable.logo1)
                     .accentColorHex("#3949AB")
             config.notificationConfig = notificationConfig.build()
             config.notificationListener = SwrvePushNotificationListener {
@@ -68,7 +86,7 @@ class FCApplication: Application() {
             //geo config
             val geoConfig = SwrveGeoConfig.Builder()
                 .geofenceTransitionListener { name: String?, transition: String?, triggerLocation: Location?, customProperties: String? ->
-                    FunnelConnectSDK.cdp().logEvent("entryGeoPlace", name.toString())
+                    TrackUtils.geoPlace(name.toString())
                 }
                 .build()
             SwrveGeoSDK.init(this, geoConfig)

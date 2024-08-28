@@ -8,8 +8,8 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentWishlistBinding
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
 class WishlistFragment : Fragment() {
 
@@ -27,7 +27,8 @@ class WishlistFragment : Fragment() {
         val wishlistViewModel =
             ViewModelProvider(this).get(WishlistViewModel::class.java)
 
-        FunnelConnectSDK.cdp().logEvent("Navigation", "wishlist")
+        TrackUtils.impression("wishlist_view")
+        Store.section = "wishlist"
 
         _binding = FragmentWishlistBinding.inflate(inflater, container, false)
         val root: View = binding.root

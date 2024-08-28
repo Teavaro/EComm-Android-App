@@ -3,7 +3,6 @@ object Libraries {
     const val testRunner = "androidx.test:runner:${Versions.testRunner}"
     const val onetrustSDK = "com.onetrust.cmp:native-sdk:${Versions.onetrustSDK}"
     const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
-    const val stdlibJDK = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val ktxCore = "androidx.core:core-ktx:${Versions.androidXCore}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val material = "com.google.android.material:material:${Versions.material}"

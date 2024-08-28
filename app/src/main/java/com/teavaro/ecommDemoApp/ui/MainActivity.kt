@@ -1,41 +1,61 @@
 package com.teavaro.ecommDemoApp.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import android.widget.Toolbar
+import androidx.annotation.RequiresApi
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.swrve.sdk.SwrveSDK
-import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
-import com.teavaro.ecommDemoApp.core.*
+import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.room.AppDb
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.main.FunnelConnectSDK
+import com.utiq.utiqTech.main.Utiq
 
-class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+
+class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
     private val navController by lazy { this.findNavController(R.id.nav_host_fragment_container) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(viewBinding.root)
+
+        TrackUtils.lifeCycle(lifecycle)
+
+        var db = Room.databaseBuilder(applicationContext, AppDb::class.java, "TeavaroEcommDB")
+            .fallbackToDestructiveMigration()
+            .build()
+
+
+
         val navView: BottomNavigationView = viewBinding.navView
-        val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_home,
-            R.id.navigation_cart,
-            R.id.navigation_wishlist,
-            R.id.navigation_shop,
-            R.id.navigation_settings
-        )
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_start,
+                R.id.navigation_home,
+                R.id.navigation_cart,
+                R.id.navigation_wishlist,
+                R.id.navigation_shop,
+                R.id.navigation_settings
+            )
         )
         setupActionBarWithNavController(this.navController, appBarConfiguration)
         navView.setupWithNavController(this.navController)
@@ -45,27 +65,36 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         }
 
-        FunnelConnectSDK.onInitialize({
-            if(FunnelConnectSDK.trustPid().isConsentAccepted()) {
-                val isStub = SharedPreferenceUtils.isStubMode(this)
-                FunnelConnectSDK.trustPid().startService(isStub)
+        Store.initializeData(this, db) {
+            this@MainActivity.runOnUiThread {
+                navView.selectedItemId = it
+                navController.navigate(it)
             }
-            FunnelConnectSDK.cdp().startService(null, Store.notificationName, Store.notificationVersion,{
-                Store.infoResponse = it
-                if(FunnelConnectSDK.cdp().getPermissions().isEmpty())
-                    Store.showPermissionsDialog(this, supportFragmentManager)
-                SwrveSDK.start(this, FunnelConnectSDK.cdp().getUmid())
-                SwrveGeoSDK.start(this)
-            },
-            {
-            })
-        }) {
         }
-
-
-
+        Log.d("okhttp.OkHttpClient:", "before UTIQ.onInitialize")
+        FunnelConnectSDK.onInitialize({
+            Store.fcStartService(this){
+                if (FunnelConnectSDK.getPermissions().isEmpty()) {
+                    Store.showPermissionsDialog(this, supportFragmentManager)
+                }
+            }
+        }) {
+            Store.umid = "FunnelConnect failed initialization."
+            Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
+        }
+        Utiq.onInitialize({
+            Log.d("okhttp.OkHttpClient:", "inside UTIQ.onInitialize")
+            if (Utiq.isConsentAccepted()) {
+                Log.d("okhttp.OkHttpClient:", "isConsentAccepted()")
+                Store.utiqStartService(this)
+            }
+        }, {
+            Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
+        })
+        handleIntent(intent)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     fun setOverflowButtonColor(toolbar: Toolbar, color: Int) {
         var drawable: Drawable? = toolbar.overflowIcon
         if (drawable != null) {
@@ -75,10 +104,21 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
     }
 
+    private fun handleIntent(intent: Intent?) {
+        val appLinkAction: String? = intent?.action
+        val appLinkData: Uri? = intent?.data
+        showDeepLinkOffer(appLinkAction, appLinkData)
+    }
+
+    private fun showDeepLinkOffer(appLinkAction: String?, appLinkData: Uri?) {
+        if (Intent.ACTION_VIEW == appLinkAction && appLinkData != null) {
+            Store.handleDeepLink(this, appLinkData, supportFragmentManager)
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.login_menu, menu)
-        LogInMenu.menu = menu
         return true
     }
 
@@ -86,20 +126,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        Log.d("iraniran","navigation_home")
         when (item.itemId) {
-
             else -> navController.navigate(R.id.navigation_settings)
         }
         return true
-    }
-
-    override fun onResume() {
-        super.onResume()
-        when(Store.section){
-            "store" -> {
-                navController.navigate(R.id.navigation_shop)
-                Store.section = ""
-            }
-        }
     }
 }

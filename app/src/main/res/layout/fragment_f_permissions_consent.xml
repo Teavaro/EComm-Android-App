@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context="com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment">
+    tools:context="com.teavaro.ecommDemoApp.ui.permissions.PermissionConsentDialogFragment">
 
     <ImageView
         android:id="@+id/btnClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:src="@drawable/ic_close_black_24dp" />
 
     <LinearLayout
@@ -34,53 +34,53 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="Analytics Tracking:"
-            android:textSize="16dp"
+            android:text="Marketing and Social Network:"
+            android:textSize="14dp"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swCookies"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
-            android:text="Used for reporting and optimisation."
-            android:textSize="15dp"
+            android:text="Enhance your browsing experience. Our cookies evaluate your behavior and present relevant offers. They also enable valuable insights for advertisers and publishers. We share this information with trusted analytics, marketing, and social media partners. If you're logged in to a social network, your user profile may be enriched with your surfing behavior."
+            android:textSize="12dp"
             tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Personalisation:"
-            android:textSize="16dp"
+            android:text="Analytics Cookies:"
+            android:textSize="14dp"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swNetwork"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
-            android:text="Used to deliver personalised experiences."
-            android:textSize="15dp"
+            android:text="Enhance your experience. Our cookies improve our website by analyzing visitor behavior, such as page duration and return frequency."
+            android:textSize="12dp"
             tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Network Token:"
-            android:textSize="16dp"
+            android:text="Personal Offers:"
+            android:textSize="14dp"
             tools:ignore="HardcodedText" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swPersonal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="This enables us to use a mobile network token to collect behavioural data for analytics and personalisation."
-            android:textSize="15dp"
+            android:text="Seamless personalization across devices. Our cookie-based identification assigns your profile to all recognized devices, ensuring consistent settings and personalized offers. Your surfing behavior is not utilized for this purpose. Registering for our newsletter allows us to identify you and link it to your profile."
+            android:textSize="12dp"
             tools:ignore="HardcodedText" />
 
         <LinearLayout

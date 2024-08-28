@@ -3,13 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="30dp"
-    android:orientation="vertical"
     android:layout_marginLeft="20dp"
+    android:layout_marginTop="30dp"
     android:layout_marginRight="20dp"
+    android:orientation="vertical"
     tools:context=".ui.settings.SettingsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/log_in"
@@ -17,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableEnd="@drawable/baseline_chevron_right_24"
+        android:gravity="start|center_vertical"
         android:text="@string/menu_login"
         android:textAlignment="textStart" />
 
@@ -25,6 +24,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
         android:text="@string/menu_logout"
         android:textAlignment="textStart"
         android:textColor="@color/orange" />
@@ -35,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableEnd="@drawable/baseline_chevron_right_24"
+        android:gravity="start|center_vertical"
         android:text="@string/consent_management"
         android:textAlignment="textStart" />
 
@@ -43,24 +44,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
-        android:text="STUB MODE"/>
+        android:text="STUB MODE" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/send_notification"
+        android:id="@+id/notifications"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/send_notification"
-        android:textAlignment="textStart"
-        android:textColor="@color/orange" />
+        android:drawableEnd="@drawable/baseline_chevron_right_24"
+        android:gravity="start|center_vertical"
+        android:text="@string/menu_notifications"
+        android:textAlignment="textStart" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/email"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/baseline_chevron_right_24"
+        android:gravity="start|center_vertical"
+        android:text="@string/send_email"
+        android:textAlignment="textStart" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ids"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/baseline_chevron_right_24"
+        android:gravity="start|center_vertical"
+        android:text="@string/send_ids"
+        android:textAlignment="textStart" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/clear_data"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
         android:text="@string/clear_data"
         android:textAlignment="textStart"
         android:textColor="@color/orange" />
+
 
 </LinearLayout>
