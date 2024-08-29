@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:text="Your consent will activate Utiq. Allowing this website to personalise your experience or use analysts whilst enabling your to retain control over your data. You can manage your Utiq choice and withdraw Utiq consent in consenthub accessible below."
+            android:text="Your consent will activate Utiq. Allowing this website to personalize your experience or use analysts whilst enabling your to retain control over your data. You can manage your Utiq choice and withdraw Utiq consent in 'ConsentHub' accessible below."
             android:textColor="@color/black"
             android:textSize="14dp"
             tools:ignore="HardcodedText" />
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:text="Crates a randomised version of the network signal, know as consentpass, used to manage the Utiq service and Utiq consents."
+            android:text="Creates a randomized version of the network signal, known as 'ConsentPass', used to manage the Utiq service and Utiq consents."
             android:textColor="@color/black"
             android:textSize="14dp"
             tools:ignore="HardcodedText" />
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:text="Recives only two Utiq marketing passes used to provide you with personalised consent and advertising or analytics."
+            android:text="Receives only two Utiq marketing passes used to provide you with personalized consent and advertising or analytics."
             android:textColor="@color/black"
             android:textSize="14dp"
             tools:ignore="HardcodedText" />

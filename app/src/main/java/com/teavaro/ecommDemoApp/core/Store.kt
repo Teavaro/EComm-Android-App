@@ -577,7 +577,7 @@ object Store {
 
     fun getClickIdentLink(context: Context): String? {
         SharedPreferenceUtils.getUserId(context)?.let {
-            return "https://funnelconnect.brand-demo.com/op/brand-demo-app-click-ident/click?$userType=$userId&uri=https%3A%2F%2Fweb.brand-demo.com%2F"
+            return "https://funnelconnect.brand-demo.com/op/brand-demo-app-click-ident/click?$userType=$userId&uri=https%3A%2F%2Fwww.brand-demo.com%2F"
         }
         return null
     }

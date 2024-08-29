@@ -4,7 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
@@ -24,7 +28,10 @@ class ShopAdapter(context: Context,
             ItemShopBinding.inflate(LayoutInflater.from(context), parent, false)
         val item = listItems[position]
         binding.txtTitle.text = item.title
-        binding.txtPrice.text = "$${item.price}"
+        binding.txtPrice.text = buildString {
+        append("$")
+        append(item.price)
+    }
         val imgId: Int = parent.resources.getIdentifier(item.picture, "drawable", "com.teavaro.ecommDemoApp")
         binding.imgPicture.setImageResource(imgId)
         if(!item.isInStock) {
