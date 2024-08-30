@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentIdsBinding
-import com.teavaro.ecommDemoApp.ui.notifications.NotificationsViewModel
 
 
 class IdsFragment : Fragment() {
@@ -26,8 +24,6 @@ class IdsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val loginViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
         TrackUtils.impression("ids_view")
 
