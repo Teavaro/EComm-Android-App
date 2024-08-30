@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.cart
+package com.teavaro.ecommDemoApp.ui
 
 import android.app.AlertDialog
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui
+package com.teavaro.ecommDemoApp
 
 import android.content.Intent
 import android.graphics.Color
@@ -19,8 +19,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.room.Room
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.room.AppDb
@@ -44,9 +42,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             .fallbackToDestructiveMigration()
             .build()
 
-
-
-        val navView: BottomNavigationView = viewBinding.navView
+        val navView = viewBinding.navView
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_start,
@@ -65,12 +61,28 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         }
 
+        navView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_settings -> {
+                    Log.d("test->", item.itemId.toString())
+                    Store.lastPage = R.id.navigation_settings
+                }
+                R.id.navigation_home -> {
+                    Log.d("test->", item.itemId.toString())
+                    Store.lastPage = R.id.navigation_home
+                }
+            }
+            navController.navigate(item.itemId)
+            true
+        }
+
         Store.initializeData(this, db) {
             this@MainActivity.runOnUiThread {
                 navView.selectedItemId = it
                 navController.navigate(it)
             }
         }
+
         Log.d("okhttp.OkHttpClient:", "before UTIQ.onInitialize")
         FunnelConnectSDK.onInitialize({
             Store.fcStartService(this){
@@ -123,13 +135,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        Log.d("iraniran","navigation_home")
-        when (item.itemId) {
-            else -> navController.navigate(R.id.navigation_settings)
-        }
+        Log.d("test->", item.itemId.toString())
+        Store.navigateAction?.invoke(Store.lastPage)
         return true
     }
 }

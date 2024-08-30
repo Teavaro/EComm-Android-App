@@ -13,55 +13,61 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.teavaro.ecommDemoApp.ui.home.HomeFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.HomeFragment"
         android:label=" @string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/navigation_publisher"
+        android:name="com.teavaro.ecommDemoApp.ui.PublisherFragment"
+        android:label=" @string/title_publisher"
+        tools:layout="@layout/fragment_publisher" />
+
+    <fragment
         android:id="@+id/navigation_cart"
-        android:name="com.teavaro.ecommDemoApp.ui.cart.CartFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.CartFragment"
         android:label=" @string/title_cart"
         tools:layout="@layout/fragment_cart" />
 
     <fragment
         android:id="@+id/navigation_wishlist"
-        android:name="com.teavaro.ecommDemoApp.ui.wishlist.WishlistFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.WishlistFragment"
         android:label=" @string/title_wishlist"
         tools:layout="@layout/fragment_wishlist" />
 
     <fragment
         android:id="@+id/navigation_shop"
-        android:name="com.teavaro.ecommDemoApp.ui.shop.ShopFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.ShopFragment"
         android:label=" @string/title_shop"
         tools:layout="@layout/fragment_shop" />
 
     <fragment
         android:id="@+id/navigation_login"
-        android:name="com.teavaro.ecommDemoApp.ui.login.LoginFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.LoginFragment"
         android:label=" @string/title_login"
         tools:layout="@layout/fragment_login" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.teavaro.ecommDemoApp.ui.notifications.NotificationsFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.NotificationsFragment"
         android:label=" @string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/navigation_email"
-        android:name="com.teavaro.ecommDemoApp.ui.emails.EmailsFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.EmailsFragment"
         android:label=" @string/title_emails"
         tools:layout="@layout/fragment_emails" />
 
     <fragment
         android:id="@+id/navigation_ids"
-        android:name="com.teavaro.ecommDemoApp.ui.ids.IdsFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.IdsFragment"
         android:label=" @string/title_ids"
         tools:layout="@layout/fragment_ids" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.teavaro.ecommDemoApp.ui.settings.SettingsFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.SettingsFragment"
         android:label=" @string/title_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

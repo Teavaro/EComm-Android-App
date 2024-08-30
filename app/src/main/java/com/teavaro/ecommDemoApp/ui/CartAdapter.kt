@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.cart
+package com.teavaro.ecommDemoApp.ui
 
 import android.annotation.SuppressLint
 import android.content.Context

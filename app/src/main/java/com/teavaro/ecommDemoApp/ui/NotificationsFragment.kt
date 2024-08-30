@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.notifications
+package com.teavaro.ecommDemoApp.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

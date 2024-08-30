@@ -7,7 +7,7 @@
     android:layout_marginLeft="20dp"
     android:layout_marginTop="30dp"
     android:layout_marginRight="20dp"
-    tools:context=".ui.ids.IdsFragment">
+    tools:context=".ui.IdsFragment">
 
     <ScrollView
         android:layout_width="match_parent"

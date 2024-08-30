@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.shop
+package com.teavaro.ecommDemoApp.ui
 
 import android.content.Context
 import android.content.Intent

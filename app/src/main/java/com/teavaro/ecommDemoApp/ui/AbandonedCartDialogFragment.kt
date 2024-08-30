@@ -13,7 +13,6 @@ import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentAbandonedCartDialogBinding
-import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
 
 class AbandonedCartDialogFragment(private var items: List<ItemEntity>) : DialogFragment(R.layout.fragment_abandoned_cart_dialog) {
 

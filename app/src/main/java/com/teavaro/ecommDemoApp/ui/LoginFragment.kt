@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.login
+package com.teavaro.ecommDemoApp.ui
 
 import android.os.Build
 import android.os.Bundle

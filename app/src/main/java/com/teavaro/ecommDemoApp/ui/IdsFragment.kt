@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.ids
+package com.teavaro.ecommDemoApp.ui
 
 import android.content.Intent
 import android.os.Bundle

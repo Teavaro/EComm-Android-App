@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.shop
+package com.teavaro.ecommDemoApp.ui
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,7 +15,6 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ItemShopBinding
-import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 
 class ShopAdapter(context: Context,
                   private val listItems: List<ItemEntity>) :

@@ -23,8 +23,8 @@ import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
-import com.teavaro.ecommDemoApp.ui.permissions.PermissionConsentDialogFragment
-import com.teavaro.ecommDemoApp.ui.permissions.UtiqConsent
+import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
+import com.teavaro.ecommDemoApp.ui.UtiqConsent
 import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.Permissions
 import com.utiq.utiqTech.main.Utiq
@@ -35,6 +35,7 @@ import java.net.URLEncoder
 
 @SuppressLint("StaticFieldLeak")
 object Store {
+    var lastPage = R.id.navigation_home
     val stubToken = "523393b9b7aa92a534db512af83084506d89e965b95c36f982200e76afcb82cb"
     private var db: AppDb? = null
     var listItems: ArrayList<ItemEntity> = ArrayList()

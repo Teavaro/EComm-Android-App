@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.settings
+package com.teavaro.ecommDemoApp.ui
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
@@ -42,24 +41,24 @@ class SettingsFragment : Fragment() {
 
         binding.clearData.setOnClickListener{
             clearData()
-            root.findNavController().navigate(R.id.navigation_settings)
+            Store.navigateAction?.invoke(R.id.navigation_settings)
             Toast.makeText(requireContext(), "Data cleared!", Toast.LENGTH_LONG).show()
         }
 
         binding.notifications.setOnClickListener {
-            root.findNavController().navigate(R.id.navigation_notifications)
+            Store.navigateAction?.invoke(R.id.navigation_notifications)
         }
 
         binding.ids.setOnClickListener {
-            root.findNavController().navigate(R.id.navigation_ids)
+            Store.navigateAction?.invoke(R.id.navigation_ids)
         }
 
         binding.email.setOnClickListener {
-            root.findNavController().navigate(R.id.navigation_email)
+            Store.navigateAction?.invoke(R.id.navigation_email)
         }
 
         binding.logIn.setOnClickListener {
-            root.findNavController().navigate(R.id.navigation_login)
+            Store.navigateAction?.invoke(R.id.navigation_login)
         }
 
         binding.logOut.setOnClickListener {
@@ -75,7 +74,7 @@ class SettingsFragment : Fragment() {
                     SharedPreferenceUtils.setLogin(requireContext(), false)
                     SharedPreferenceUtils.setUserId(requireContext(), "")
                     Store.userId = ""
-                    root.findNavController().navigate(R.id.navigation_settings)
+                    Store.navigateAction?.invoke(R.id.navigation_settings)
                     Toast.makeText(requireContext(), "Logout success!", Toast.LENGTH_SHORT).show()
                 }
                 .create().show()

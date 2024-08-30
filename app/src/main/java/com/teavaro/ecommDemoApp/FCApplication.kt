@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui
+package com.teavaro.ecommDemoApp
 
 import android.app.Application
 import android.app.NotificationChannel
@@ -15,8 +15,6 @@ import com.swrve.sdk.SwrveSDK
 import com.swrve.sdk.config.SwrveConfig
 import com.swrve.sdk.geo.SwrveGeoConfig
 import com.swrve.sdk.geo.SwrveGeoSDK
-import com.teavaro.ecommDemoApp.BuildConfig
-import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.funnelConnect.data.models.FCOptions
