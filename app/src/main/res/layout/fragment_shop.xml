@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="30dp"
     android:orientation="vertical"
-    tools:context=".ui.shop.ShopFragment">
+    tools:context=".ui.ShopFragment">
 
     <ScrollView
         android:layout_width="match_parent"

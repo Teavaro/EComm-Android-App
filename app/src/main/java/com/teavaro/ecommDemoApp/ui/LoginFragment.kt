@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.login
+package com.teavaro.ecommDemoApp.ui
 
 import android.os.Build
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.R
@@ -15,7 +14,6 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentLoginBinding
-import com.teavaro.ecommDemoApp.ui.notifications.NotificationsViewModel
 import com.teavaro.funnelConnect.data.models.FCUser
 import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import java.nio.charset.StandardCharsets
@@ -40,8 +38,6 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val loginViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
         TrackUtils.impression("login_view")
 

@@ -1,21 +1,21 @@
-package com.teavaro.ecommDemoApp.ui.home
+package com.teavaro.ecommDemoApp.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentHomeBinding
-import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
 
 
 class HomeFragment : Fragment() {
@@ -31,8 +31,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -61,6 +59,28 @@ class HomeFragment : Fragment() {
         for (pos in 0..list.lastIndex) {
             binding.listItems.addView(shopAdapter.getView(pos, view, container))
         }
+        val btnSeeMore = Button(context).apply {
+            text = "Check our recipes"
+            layoutParams = ViewGroup.MarginLayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            ).apply {
+                marginStart = 16.dpToPx(context)
+                marginEnd = 16.dpToPx(context)
+            }
+            isAllCaps = true
+            gravity = Gravity.CENTER
+            setOnClickListener {
+                TrackUtils.click("publisher")
+                //binding.root.findNavController().navigate(R.id.navigation_publisher)
+                Store.navigateAction?.invoke(R.id.navigation_publisher)
+            }
+        }
+        binding.listItems.addView(btnSeeMore)
+    }
+
+    private fun Int.dpToPx(context: Context): Int {
+        return (this * context.resources.displayMetrics.density).toInt()
     }
 
     override fun onDestroyView() {

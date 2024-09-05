@@ -7,7 +7,7 @@
     android:layout_marginTop="30dp"
     android:layout_marginRight="20dp"
     android:orientation="vertical"
-    tools:context=".ui.settings.SettingsFragment">
+    tools:context=".ui.SettingsFragment">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/log_in"

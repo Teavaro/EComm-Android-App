@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="30dp"
-    tools:context=".ui.cart.CartFragment">
+    tools:context=".ui.CartFragment">
 
     <ScrollView
         android:layout_width="match_parent"

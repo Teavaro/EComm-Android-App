@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.permissions
+package com.teavaro.ecommDemoApp.ui
 
 /**
  * A simple [Fragment] subclass.
