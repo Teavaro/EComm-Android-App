@@ -7,6 +7,7 @@ object SharedPreferenceUtils {
     private const val STUB_TOKEN = "STUB_TOKEN"
     private const val IS_LOGIN = "IS_LOGIN"
     private const val USER_ID = "USER_ID"
+    private const val MARTECHPASS = "MARTECHPASS"
 
     private fun getSharedPreferences(context: Context) = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
 
@@ -31,4 +32,10 @@ object SharedPreferenceUtils {
     }
 
     fun getUserId(context: Context) = getSharedPreferences(context).getString(USER_ID, null)
+
+    fun setMartechpass(context: Context, value: String?) {
+        getSharedPreferences(context).edit().putString(MARTECHPASS, value).apply()
+    }
+
+    fun getMartechpass(context: Context) = getSharedPreferences(context).getString(MARTECHPASS, null)
 }

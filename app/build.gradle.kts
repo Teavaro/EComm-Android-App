@@ -102,7 +102,7 @@ dependencies {
     implementation(BuildSystem.libraries.googleServices)
 
     //FunnelConnect and UTIQ
-    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.41")
+    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.43")
     {
         exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
     }

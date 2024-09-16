@@ -14,17 +14,18 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.swrve.sdk.SwrveSDK
 import com.swrve.sdk.geo.SwrveGeoSDK
+import com.teavaro.ecommDemoApp.FCApplication
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.dataClases.InfoResponse
 import com.teavaro.ecommDemoApp.core.room.ACEntity
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
-import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
 import com.teavaro.ecommDemoApp.ui.UtiqConsent
+import com.teavaro.funnelConnect.data.models.PassQuery
 import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.Permissions
 import com.utiq.utiqTech.main.Utiq
@@ -569,8 +570,7 @@ object Store {
         Utiq.startService(stubToken, {
             Log.d("okhttp.OkHttpClient", "startService good")
             atid = it.atid.toString()
-            mtid = it.mtid.toString()
-            TrackUtils.mtid = mtid
+            SharedPreferenceUtils.setMartechpass(context, it.mtid.toString())
         }, {
             Log.d("okhttp.OkHttpClient", it.message)
         })
@@ -603,7 +603,7 @@ object Store {
         Utiq.clearCookies()
         atid = ""
         mtid = ""
-        TrackUtils.mtid = null
+        SharedPreferenceUtils.setMartechpass(context, null)
     }
 
     fun isNbaPermissionAccepted(): Boolean {
@@ -619,7 +619,7 @@ object Store {
         action: (() -> Unit)? = null
     ) {
         FunnelConnectSDK
-            .startService(null, fcNotificationsName, notificationsVersion, {
+            .startService(null, SharedPreferenceUtils.getMartechpass(FCApplication.instance)?.let { PassQuery("martechpass", it) }, fcNotificationsName, notificationsVersion, {
                 updateFCData(it)
                 SwrveSDK.start(context, FunnelConnectSDK.getUMID())
                 SwrveGeoSDK.start(context)

@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.teavaro.ecommDemoApp.FCApplication
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentIdsBinding
 
@@ -42,7 +44,7 @@ class IdsFragment : Fragment() {
         binding.txtUserid.text = Store.userId
         binding.txtUmid.text = Store.umid
         binding.txtAtid.text = Store.atid
-        binding.txtMtid.text = Store.mtid
+        binding.txtMtid.text = SharedPreferenceUtils.getMartechpass(FCApplication.instance)
         binding.txtInfo.text = Store.attributes
     }
 

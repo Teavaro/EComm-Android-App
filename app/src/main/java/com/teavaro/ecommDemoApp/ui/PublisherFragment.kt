@@ -37,7 +37,7 @@ class PublisherFragment : Fragment() {
         if(stubToken != null){
             qsParam = "?utiq_stub=$stubToken"
         }
-        binding.webView.loadUrl("https://publisher-demo.media$qsParam")
+        binding.webView.loadUrl("https://www.publisher-demo.media$qsParam")
 
         return root
     }
