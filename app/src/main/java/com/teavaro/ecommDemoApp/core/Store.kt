@@ -567,7 +567,7 @@ object Store {
         atid = "{\"status\":\"notFound\"}"
         mtid = "{\"status\":\"notFound\"}"
         val stubToken = SharedPreferenceUtils.getStubToken(context)
-        Utiq.startService(stubToken, {
+        Utiq.fetchIdConnectData(stubToken, {
             Log.d("okhttp.OkHttpClient", "startService good")
             atid = it.atid.toString()
             SharedPreferenceUtils.setMartechpass(context, it.mtid.toString())

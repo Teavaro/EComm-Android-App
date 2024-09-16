@@ -75,17 +75,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             navController.navigate(item.itemId)
             true
         }
-
         Store.initializeData(this, db) {
             this@MainActivity.runOnUiThread {
                 navView.selectedItemId = it
                 navController.navigate(it)
             }
         }
-
         Log.d("okhttp.OkHttpClient:", "before UTIQ.onInitialize")
         FunnelConnectSDK.onInitialize({
-            Store.fcStartService(this){
+            Store.fcStartService(this) {
                 if (FunnelConnectSDK.getPermissions().isEmpty()) {
                     Store.showPermissionsDialog(this, supportFragmentManager)
                 }
