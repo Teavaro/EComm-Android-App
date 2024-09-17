@@ -90,6 +90,10 @@ class SettingsFragment : Fragment() {
                 SharedPreferenceUtils.setStubToken(requireContext(), Store.stubToken)
                 Store.showUtiqConsent(requireActivity(), parentFragmentManager)
             }
+            else{
+                SharedPreferenceUtils.setStubToken(requireContext(), null)
+                SharedPreferenceUtils.setMartechpass(requireContext(), null)
+            }
         }
         return root
     }

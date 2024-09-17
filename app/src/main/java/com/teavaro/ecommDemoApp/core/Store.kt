@@ -279,12 +279,13 @@ object Store {
         var text = "&amp;attributes=${URLEncoder.encode("{}", "utf-8")}"
         if (isNbaPermissionAccepted()) {
             attributes?.let {
-                text = "&amp;attributes=${URLEncoder.encode(it, "utf-8")}"
+                text = "&amp;attributes=${URLEncoder.encode(it, "utf-8")}&amp;fc_umid=$umid"
             }
             text += "&amp;allowTracking=true"
         } else {
             text += "&amp;allowTracking=false"
         }
+
         return """
            <!DOCTYPE html>
            <html>
@@ -571,6 +572,9 @@ object Store {
             Log.d("okhttp.OkHttpClient", "startService good")
             atid = it.atid.toString()
             SharedPreferenceUtils.setMartechpass(context, it.mtid.toString())
+            fcStartService(context as Activity) {
+
+            }
         }, {
             Log.d("okhttp.OkHttpClient", it.message)
         })
