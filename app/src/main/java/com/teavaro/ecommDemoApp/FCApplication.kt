@@ -22,7 +22,6 @@ import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import com.utiq.utiqTech.data.models.UtiqOptions
 import com.utiq.utiqTech.main.Utiq
 
-@Suppress("unused")
 class FCApplication: Application() {
 
     companion object {

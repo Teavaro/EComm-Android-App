@@ -10,8 +10,6 @@ object Libraries {
     const val lifecycleProcess = "androidx.lifecycle:lifecycle-process:${Versions.lifecycle}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val viewBinding = "androidx.databinding:viewbinding:${Versions.viewBinding}"
-    const val chucker = "com.github.chuckerteam.chucker:library:${Versions.chucker}"
-    const val chuckerNoOp = "com.github.chuckerteam.chucker:library-no-op:${Versions.chucker}"
     const val activityX = "androidx.activity:activity-ktx:${Versions.activityX}"
     const val fragmentX = "androidx.fragment:fragment-ktx:${Versions.fragmentX}"
     const val androidXWorkRuntime = "androidx.work:work-runtime-ktx:${Versions.androidXWorkRuntime}"

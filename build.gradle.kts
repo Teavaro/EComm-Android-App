@@ -15,7 +15,7 @@ buildscript {
 
 plugins {
     id(BuildSystem.plugins.detektLint).version(BuildSystem.versions.detektLint)
-    id("org.jetbrains.kotlin.android") version "1.8.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.1.0" apply false
 }
 
 tasks.register("detektAll", io.gitlab.arturbosch.detekt.Detekt::class) {

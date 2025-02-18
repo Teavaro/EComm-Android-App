@@ -18,14 +18,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/utiq_logo"/>
+
         <TextView
             android:id="@+id/title_text_view"
             style="@style/BoldText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="UTIQ Consent"
+            android:text="Use of Utiq technology powered by your telecom operator"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
 
@@ -34,18 +39,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:text="Your consent will activate Utiq. Allowing this website to personalize your experience or use analysts whilst enabling your to retain control over your data. You can manage your Utiq choice and withdraw Utiq consent in 'ConsentHub' accessible below."
+            android:text="We, [DATA CONTROLLER], use the Utiq technology for digital marketing or analytics (as described on this consent notice) based on your browsing activity across our website(s), listed here (only if you are using a supported internet connection provided by a participating telecom operator and consent on each website).
+The Utiq technology is privacy centric to give you choice and control.
+It uses an identifier created by your telecom operator based on your IP address and a telecom reference such as your telecom account (e.g., mobile number).
+The identifier is assigned to the internet connection, so anyone connecting their device and consenting to the Utiq technology will receive the same identifier. Typically:"
             android:textColor="@color/black"
-            android:textSize="14dp"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Your movil operator:"
-            android:textSize="14dp"
+            android:textSize="12dp"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -53,18 +52,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:text="Uses your IP address to check eligibility to use the service and create a random value, know as network signal."
+            android:text=" - on a broadband connection (e.g., Wi-Fi), the marketing or analytics will be performed based on the browsing activities of consenting household members’."
             android:textColor="@color/black"
-            android:textSize="14dp"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="UTIQ:"
-            android:textSize="14dp"
+            android:textSize="12dp"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -72,18 +62,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:text="Creates a randomized version of the network signal, known as 'ConsentPass', used to manage the Utiq service and Utiq consents."
+            android:text=" - on mobile data, the marketing will be more personalised, as it will be based on the browsing of the individual mobile user only."
             android:textColor="@color/black"
-            android:textSize="14dp"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="EcommDemoApp:"
-            android:textSize="14dp"
+            android:textSize="12dp"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -91,17 +72,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:text="Receives only two Utiq marketing passes used to provide you with personalized consent and advertising or analytics."
+            android:text="You can withdraw this consent anytime via 'Manage Utiq' at the bottom of this site or in Utiq’s privacy portal (“consenthub”). For more, see Utiq's privacy statement."
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="12dp"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/accept_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:text="Accept"
             android:textSize="10dp"
